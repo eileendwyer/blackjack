@@ -1,16 +1,25 @@
 from dealer import Dealer
 import random
 
-def blackjack_game():
-    print("Let's play Blackjack!\n The House Rule is the dealer will stand on 17.")
 
-dealer = Dealer()
+class BlackjackGame:
+    def __init__(self):
+        self.player_hand = Hand()
+        self.dealer_hand = Hand()
+        self.deal = self.first_deal
+        print("Let's play Blackjack!\n The House Rule is the dealer will stand on 17.")
+
+    def open_game(self):
+        self.deal.deal_hand(self.player_hand)
+        self.deal.deal_hand(self.dealer)
+
+
 class Hand:
-
     def __init__(self):
         self.deck_value = {card: min(1 + self.rank.index(card[0]), 10)
                     for card in self.deck}
         self.hand_value = 0
+        self.dealer = Dealer()
 
     def value_hand(self):
         count_aces = 0
@@ -35,7 +44,10 @@ class Hand:
                 dealer.clear_hand()
 
 
-class Player:
+class Player():
+
+    def __init__(self):
+        self.player = Hand()
 
     def play_hand(self, player):
         dealer = Dealer()
@@ -50,7 +62,7 @@ class Player:
 
     def end_game(self):
         play_again = input("Do you want to play again? y/n").lower()
-        deck = random.sample(cards, 52)
+        deck = random.sample(self.cards, 52)
         if play_again == 'y':
             self.deck.shuffle()
             Dealer()
@@ -58,4 +70,4 @@ class Player:
             print("Goodbye!")
 
 
-blackjack_game()
+BlackjackGame()
