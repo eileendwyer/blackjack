@@ -13,15 +13,12 @@ class Dealer:
         self.first_deal = self.deck[-1], self.deck[0]
         self.hand = []
 
-
     def shuffle(self):
         return deck.shuffle()
-
 
     def deal_hit(self):
         hit = self.card
         self.hand.append(hit)
-#        return self.hand
 
     def deal_hand(self):
         deal = self.first_deal
@@ -33,8 +30,8 @@ class Dealer:
         self.hand_value = 0
 
 deal = Dealer()
-#print(deal.first_deal)
+# print(deal.first_deal)
 hit = Dealer()
-#print(hit.card)
+# print(hit.card)
 deck = Dealer()
-#print(deck.deck)
+# print(deck.deck)
