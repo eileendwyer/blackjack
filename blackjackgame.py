@@ -2,6 +2,11 @@ from itertools import product
 import random
 
 
+def blackjack_game():
+    print("Let's play Blackjack!\n The House Rule is the dealer will stand on 17.")
+
+
+
 class Dealer:
 
     def __init__(self):
@@ -13,35 +18,30 @@ class Dealer:
         self.first_deal = self.deck[-1], self.deck[0]
         self.hand = []
 
-
     def shuffle(self):
-        return deck.shuffle()
-
+        return self.shuffle()
 
     def deal_hit(self):
         hit = self.card
         self.hand.append(hit)
-#        return self.hand
 
     def deal_hand(self):
         deal = self.first_deal
         self.hand.append(deal)
-#        return self.hand
 
     def clear_hand(self):
-        del(self.hand)
+        del self.hand
         self.hand_value = 0
 
-from dealer import Dealer
-import random
 
-dealer = Dealer()
 class Hand:
 
     def __init__(self):
+
         self.deck_value = {card: min(1 + self.rank.index(card[0]), 10)
                     for card in self.deck}
         self.hand_value = 0
+        self.dealer = Dealer()
 
     def value_hand(self):
         count_aces = 0
@@ -68,6 +68,9 @@ class Hand:
 
 class Player:
 
+    def __init__(self):
+        super().__init__()
+
     def play_hand(self, player):
         dealer = Dealer()
         player.value_hand()
@@ -81,16 +84,17 @@ class Player:
 
     def end_game(self):
         play_again = input("Do you want to play again? y/n").lower()
-        deck = random.sample(cards, 52)
+        self.deck = random.sample(self.cards, 52)
         if play_again == 'y':
             self.deck.shuffle()
             Dealer()
         else:
             print("Goodbye!")
 
-deal = Dealer()
-#print(deal.first_deal)
-hit = Dealer()
-#print(hit.card)
-deck = Dealer()
-#print(deck.deck)
+
+# print(deal.first_deal)
+# hit = Dealer()
+# print(hit.card)
+# deck = Dealer()
+# print(deck.deck)
+blackjack_game()
