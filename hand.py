@@ -1,6 +1,9 @@
 from dealer import Dealer
 import random
 
+def blackjack_game():
+    print("Let's play Blackjack!\n The House Rule is the dealer will stand on 17.")
+
 dealer = Dealer()
 class Hand:
 
@@ -45,8 +48,6 @@ class Player:
                 print("You win!")
                 dealer.clear_hand()
 
-                break
-
     def end_game(self):
         play_again = input("Do you want to play again? y/n").lower()
         deck = random.sample(cards, 52)
@@ -57,3 +58,4 @@ class Player:
             print("Goodbye!")
 
 
+blackjack_game()
